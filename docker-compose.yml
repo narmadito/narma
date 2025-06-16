@@ -1,0 +1,72 @@
+services:
+  web:
+    image: dimitri1231/narma:v1.0
+    volumes:
+      - ./media:/app/media
+      - ./:/app
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - .env
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  celery:
+    image: dimitri1231/narma:v1.0
+    command: celery -A narma worker --loglevel=info
+    volumes:
+      - ./media:/app/media
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - .env
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  db:
+    image: postgres:15
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:1.25
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./staticfiles:/app/staticfiles
+      - ./media:/app/media
+    depends_on:
+      - web
+    networks:
+      - app_network
+    restart: unless-stopped
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  redis_data:
+  postgres_data:
