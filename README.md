@@ -60,7 +60,7 @@ Make sure you have the following tools installed:
 ## 🛠️ Setup Steps
 #### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/narma.git
+git clone https://github.com/narmadito/narma.git
 cd narma
 ```
 #### 2. Create your .env file
