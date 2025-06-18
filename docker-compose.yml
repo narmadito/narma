@@ -3,7 +3,6 @@ services:
     image: dimitri1231/narma:v1.0
     volumes:
       - ./media:/app/media
-      - ./:/app
     depends_on:
       - db
       - redis
@@ -55,7 +54,6 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./staticfiles:/app/staticfiles
       - ./media:/app/media
     depends_on:
       - web
@@ -70,3 +68,4 @@ networks:
 volumes:
   redis_data:
   postgres_data:
+
