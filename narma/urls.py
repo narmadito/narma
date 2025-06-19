@@ -13,9 +13,9 @@ from rest_framework_simplejwt.views import (
 
 schema_view=get_schema_view(
     openapi.Info(
-        title='E-commerce API',
+        title='Narma',
         default_version='v1',
-        description='Mziuri project for E-commerce platform API'
+        description='Social network backend API project – Narma'
     ),
     public=True,
     permission_classes=(permissions.AllowAny,)
