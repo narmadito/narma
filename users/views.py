@@ -175,7 +175,7 @@ class ResetPasswordViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
             user = User.objects.get(email=serializer.validated_data['email'])
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
-            reset_url = f"http://127.0.0.1:8000/password_reset_confirm/{uid}/{token}/"
+            reset_url = f"http://localhost/password_reset_confirm/{uid}/{token}/"
             send_code_email("Reset Password", f"Click the link to reset your password: {reset_url}", user.email)
             return Response({"message": 'Sent successfully'}, status=200)
         return Response(serializer.errors, status=400)
