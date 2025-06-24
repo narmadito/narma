@@ -1,6 +1,6 @@
 services:
   web:
-    image: dimitri1231/narma:v1.0
+    build: .
     volumes:
       - ./media:/app/media
     depends_on:
