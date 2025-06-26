@@ -81,15 +81,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'narma.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
@@ -180,7 +172,7 @@ SWAGGER_SETTINGS = {
             'type': 'apiKey',
             'name': 'Authorization',
             'in': 'header',
-            'description': 'შეიყვანეთ JWT ტოკენი: Bearer <ტოკენი>',
+            'description': 'Enter JWT Token: Bearer <Token>',
         }
     },
 }
