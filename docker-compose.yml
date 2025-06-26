@@ -15,7 +15,9 @@ services:
     restart: unless-stopped
 
   celery:
-    image: dimitri1231/narma:v1.0
+    build: 
+      context: . 
+      dockerfile: Dockerfile
     command: celery -A narma worker --loglevel=info
     volumes:
       - ./media:/app/media
