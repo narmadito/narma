@@ -97,6 +97,9 @@ python manage.py test
 ```
 **Pro tip**: Use docker ps to find your exact web container ID, or use docker exec -it narma-web-1 bash if that's your container name.
 
+When you run tests, make sure to place a default profile image inside the `media/profile/` directory.
+This image will be automatically used for users who haven't uploaded a custom profile picture.
+
 ### ✅ 6. Start Exploring!
 
 Your **Narma** backend is now up and running! You can access the following:
