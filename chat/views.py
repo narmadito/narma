@@ -70,7 +70,6 @@ class GroupViewSet(
 
         members = self.request.data.get('members', '')
         if members:
-            # Split by commas, strip spaces
             usernames = [username.strip() for username in members.split(',') if username.strip()]
             users_to_add = User.objects.filter(username__in=usernames).exclude(id=self.request.user.id)
             allowed_users = [u for u in users_to_add if not is_blocked(self.request.user, u)]
